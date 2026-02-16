@@ -7,11 +7,14 @@ export default function LocationListContent() {
     const [locationData, setLocationData] = useState<locationData>();
 
     useEffect(()=>{
+        // fetch api
         async function fetchLocationData(){
             const res = await fetch(
                 `https://api.ipquery.io/?format=json`,
             );
+        // parse json response
         const jsonRes = await res.json();
+        // set location data
         setLocationData({
             ip: jsonRes.ip,
             country: jsonRes.location.country,
